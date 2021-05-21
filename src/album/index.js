@@ -39,7 +39,6 @@ const fetchAlbumData = async () => {
                 location.replace(location + "&albumID=75621062")
             else resolve()
                 ;(function () {
-
                 location.endsWith("&albumID=75621062") ? resolve() : this()
             })();
         })
@@ -47,21 +46,25 @@ const fetchAlbumData = async () => {
     await checkOrApplyMock
     console.log('next')
     //get query
-    75621062
-
     let urlParams = new URLSearchParams(location.search);
     const albumID = urlParams.get('albumID')
     console.log(`https://striveschool-api.herokuapp.com/api/deezer/album/${albumID}`)
-    let albumData = {}
+
     //fetch starting by album ID
 
     return await fetch(`https://striveschool-api.herokuapp.com/api/deezer/album/${albumID}`)
-        .then(res => res.json()).then((obj) => albumData = { author: obj.data.artist , songs: obj.data['tracks'].data }  )
+        .then(res => res.json()).then( (obj) => {
+            return { author: obj.artist , songs: obj.tracks.data , title: obj.title  }
+            }
+        )
 }
 const populatePage = ( albumObj ) => {
     let data = albumObj
-    let albumHtml = tmpl("song_template",data )
-    $('#song_template').outerHTML
+
+    $('#playlist tbody')[0].innerHTML = tmpl("song_template", data )
+
+    let artistHtml =
+    $('#artistSock')[0].innerHTML = tmpl("artist_template", data )
 
 }
 window.onload = () => {

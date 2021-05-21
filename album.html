@@ -83,19 +83,17 @@
             </nav>
         </div>
         <div class="col-xl-10 col-md-9 col-sm-8">
-            <main>
-
-            </main>
             <section id="playlist">
                 <div class="container ">
                     <div class="row">
 
-                        <div class="col-md-4 mt-4 text-center justify-content-center animate__animated animate__fadeInDown">
+                        <div id="artistSock" class="col-md-4 mt-4 text-center justify-content-center animate__animated animate__fadeInDown">
+                            <script type="text/html" id="artist_template">
                             <div class="row justify-content-center p-4">
-                                <img src="img/queen.jpeg" width="80%" class="img-fluid">
+                                <img src="<%= author.picture_medium %>" width="80%" class="img-fluid">
                             </div>
                             <div class="row justify-content-center">
-                                <h5 class="pl-3 pt-2 text-white">Queen II (Deluxe Edition <br> 2011 Remaster</h5>
+                                <h5 class="pl-3 pt-2 text-white"> <%= title %> </h5>
                             </div>
                             <div class="row justify-content-center">
                                 <button class="artist-button play"> Play</button>
@@ -107,22 +105,22 @@
                             <div class="row justify-content-center align-items-center ">
                                 <i class="far fa-heart text-white m-3" style="font-size: 30px;"></i>
                                 <i class="fa fa-ellipsis-h text-white m-3 " style="font-size: 30px;"></i></div>
-
+                            </script>
                         </div>
 
                         <div class="col-8 table-column">
                             <table class="table table-borderless">
                                 <tbody>
                                 <script type="text/html" id="song_template">
-                                    <% for( let i = 0 ; i <  ){ %>
+                                    <% for( let i = 0 ; i < songs.length ; i++ ){ %>
                                     <tr class="songs">
                                         <td scope="col"><i class="bi bi-music-note"></i></td>
-                                        <td scope="col">Procession - Remastered <span
-                                                class="artist-name d-flex flex-column">Queen</span></td>
+                                        <td scope="col"><%= songs[i].title %> <span
+                                                class="artist-name d-flex flex-column"> <%= author.name %> </span></td>
                                         <td scope="row"></td>
                                         <td scope="col">1:13</td>
                                     </tr>
-                                    <% for( let i = 0 ; i <  ){ %>
+                                    <% } %>
                                 </script>
                                 </tbody>
                             </table>
