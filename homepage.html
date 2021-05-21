@@ -48,6 +48,12 @@
                     <li class="nav-item">
                         <p> <b><a class="nav-link" href="#"><i style="position: relative;left: -0px;" class="fab fa-spotify"></i>&nbsp;&nbsp;&nbsp;&nbsp;Your Library</a></b><p>
                     </li>
+                    <li>
+                        <form class="form-inline my-2 my-lg-0" id="search-bar">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search">
+                            <button onclick="searchBar()" class="btn btn-outline-success my-2 my-sm-0" type="button">Search</button>
+                          </form>
+                    </li>
 
                 </ul>
                 <ul class="nav navbar-nav mt-auto mb-5 w-75">
@@ -92,9 +98,9 @@
                 <section id="home-cards">
                     <div class="container">
                         <h1 style class="animate__animated animate__fadeInTopRight text-white pt-4">#THROWBACKTHURSDAY</h1>
-                        <div class="animate__animated animate__slideInRight row py-5">
+                        <div class="animate__animated animate__slideInRight row py-5" id="first-row">
                             <a href="">
-                            <div class=" mb-4 text-center col-sm-6 col-md-4 col-lg-2">
+                          <!--   <div class=" mb-4 text-center col-sm-6 col-md-4 col-lg-2">
                                 <div class="album-container">
                                     <a href=""><img src="img/card1.jpeg" alt="" class="img-fluid" /></a>
                                     <h6 class="album-title text-white">Italian Karaoke</h6>
@@ -129,10 +135,10 @@
                                     <a href=""> <img src="img/card6.jpeg" alt="" class="img-fluid" /></a>
                                     <h6 class="album-title text-white">I Love My '90s Hip-Hop</h6>
                                 </div>
-                            </div>
+                            </div> -->
                             
                         </div>
-                        <h1 class="animate__animated animate__fadeInTopRight text-white pt-4">Classifiche</h1>
+                        <h1 class="animate__animated animate__fadeInTopRight text-white pt-2">Classifiche</h1>
                         <div class="row pt-4">
 
                         </div>
@@ -256,5 +262,6 @@
         integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
         crossorigin="anonymous"></script>
 <script src="script.js"></script>
+<script src="homescript.js"></script>
 </body>
 </html>
