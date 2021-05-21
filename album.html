@@ -89,6 +89,9 @@
 
                         <div id="artistSock" class="col-md-4 mt-4 text-center justify-content-center animate__animated animate__fadeInDown">
                             <script type="text/html" id="artist_template">
+                                <div class="row justify-content-center">
+                                    <h6 class="pl-3 pt-2 text-white"> <a href="artist.html?artistID=<%= author.id %>"> <%= author.name %>  </a> </h6>
+                                </div>
                             <div class="row justify-content-center p-4">
                                 <img src="<%= author.picture_medium %>" width="80%" class="img-fluid">
                             </div>

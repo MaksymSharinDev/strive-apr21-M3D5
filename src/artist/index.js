@@ -29,17 +29,17 @@ const tmpl = function (str, data){
     return data ? fn( data ) : fn;
 };
 
-const fetchAlbumData = async () => {
+const fetchArtistData = async () => {
     //MOCK
     let checkOrApplyMock =
         new Promise((resolve) => {
             if (!location.search.length === 0)
-                location.replace(location + "?albumID=75621062")
-            else if (!location.search.includes('albumID'))
-                location.replace(location + "&albumID=75621062")
+                location.replace(location + "?artistID=412")
+            else if (!location.search.includes('artistID'))
+                location.replace(location + "&artistID=412")
             else resolve()
                 ;(function () {
-                location.endsWith("&albumID=75621062") ? resolve() : this()
+                location.endsWith("&artistID=412") ? resolve() : this()
             })();
         })
     console.log( checkOrApplyMock )
@@ -47,28 +47,22 @@ const fetchAlbumData = async () => {
     console.log('next')
     //get query
     let urlParams = new URLSearchParams(location.search);
-    const albumID = urlParams.get('albumID')
-    console.log(`https://striveschool-api.herokuapp.com/api/deezer/album/${albumID}`)
+    const artistID = urlParams.get('artistID')
 
-    //fetch starting by album ID
+    //fetch starting by artist ID
 
-    return await fetch(`https://striveschool-api.herokuapp.com/api/deezer/album/${albumID}`)
+    return await fetch(`https://striveschool-api.herokuapp.com/api/deezer/artist/${artistID}`)
         .then(res => res.json()).then( (obj) => {
-            return { author: obj.artist , songs: obj.tracks.data , title: obj.title  }
+            console.log( { name: obj.name , fans: obj.nb_fan , albums: obj.nb_album  } )
+            return { name: obj.name , fans: obj.nb_fan , albums: obj.nb_album  }
             }
         )
 }
-const populatePage = ( albumObj ) => {
-    let data = albumObj
-
-    $('#playlist tbody')[0].innerHTML = tmpl("song_template", data )
-
-    let artistHtml =
-    $('#artistSock')[0].innerHTML = tmpl("artist_template", data )
-
+const populatePage = ( artistObj ) => {
+    $('#artist-top')[0].innerHTML = tmpl("artist_template", artistObj )
 }
 window.onload = () => {
-    fetchAlbumData()
+    fetchArtistData()
         .then( populatePage )
 
 }
